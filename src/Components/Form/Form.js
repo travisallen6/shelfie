@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-
+import './form.css'
+import noImage from './no-image.png'
 
 export default class Form extends Component {
     constructor(){
@@ -27,14 +28,28 @@ export default class Form extends Component {
     }
     
     render(){
+
+        let formImageDisplay = noImage
+
         return(
-            <div>
-                <div>Form Component</div>
-                <input type='text' value={this.state.imageUrlInput} onChange={ (e) => this.handleImageUrlInput(e.target.value) } />
-                <input type='text' value={this.state.productNameInput} onChange={ (e) => this.handleProductNameInput(e.target.value) }/>
-                <input type='text' value={this.state.price} onChange={ (e) => this.handlePriceInput(e.target.value) }/>
-                <button onClick={ ()=>this.handleClickCancel() }>Cancel</button>
-                <button>Add to Inventory</button>
+            <div className='form-container'>
+                <div className='form-image'><div><img  width='75px' height='75px' src={formImageDisplay} alt=''/></div></div>
+                <div className='form-input-container'>
+                    <p>Image URL:</p>
+                    <input type='text' value={this.state.imageUrlInput} onChange={ (e) => this.handleImageUrlInput(e.target.value) } />
+                </div>
+                <div className='form-input-container'>
+                    <p>Product Name:</p>
+                    <input type='text' value={this.state.productNameInput} onChange={ (e) => this.handleProductNameInput(e.target.value) }/>
+                </div>
+                <div className='form-input-container'>
+                    <p>Price:</p>
+                    <input type='text' value={this.state.price} onChange={ (e) => this.handlePriceInput(e.target.value) }/>
+                </div>
+                <div className='form-button-container'>
+                    <div className='form-button' onClick={ ()=>this.handleClickCancel() }>Cancel</div>
+                    <div className='form-button'>Add to Inventory</div>
+                </div>
             </div>
 
         )
